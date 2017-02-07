@@ -1,4 +1,7 @@
 import sqlite3
+import matplotlib
+matplotlib.use('Agg')
+from matplotlib import pylab as pl
 
 db = sqlite3.connect('./build/oshawa.sqlite3')
 cur = db.cursor()
@@ -14,5 +17,5 @@ result = cur.execute("""
 """)
 
 rows = result.fetchall()
-for row in rows:
-	print row
+pl.hist([float(x[1]) for x in rows], bins=100)
+pl.savefig('./build/lengths.png')
