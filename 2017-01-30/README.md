@@ -14,7 +14,7 @@
 - Full isolation = `SERIALIZABLE`
 - No isolation = `READ UNCOMMITTED`
 
-[code language="python"]
+```python
 import sqlite3
 import matplotlib
 matplotlib.use('Agg')
@@ -36,4 +36,4 @@ result = cur.execute("""
 rows = result.fetchall()
 pl.hist([float(x[1]) for x in rows], bins=100)
 pl.savefig('./build/lengths.png')
-[/code]
+```
